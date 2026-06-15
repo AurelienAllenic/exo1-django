@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Connexion — CSV Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5 mt-4">
+    <div class="card">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4">
+          <i class="bi bi-person-lock me-2 text-primary"></i>Connexion
+        </h2>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="mb-3">
+            <label class="form-label fw-semibold">{{ field.label }}</label>
+            {% if 'password' in field.html_name %}
+            <div class="input-group">
+              {{ field }}
+              <button class="btn btn-outline-secondary" type="button"
+                      onclick="togglePassword(this)" tabindex="-1" title="Afficher / masquer">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            {% else %}
+            {{ field }}
+            {% endif %}
+            {% if field.errors %}
+            <div class="text-danger small mt-1">{{ field.errors.0 }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% if form.non_field_errors %}
+          <div class="alert alert-danger small">{{ form.non_field_errors.0 }}</div>
+          {% endif %}
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Se connecter</button>
+          </div>
+        </form>
+        <hr>
+        <p class="text-center mb-0 text-muted small">
+          Pas encore de compte ? <a href="{% url 'accounts:register' %}">S'inscrire</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function togglePassword(btn) {
+  const input = btn.previousElementSibling;
+  const icon = btn.querySelector('i');
+  if (input.type === 'password') {
+    input.type = 'text';
+    icon.className = 'bi bi-eye-slash';
+  } else {
+    input.type = 'password';
+    icon.className = 'bi bi-eye';
+  }
+}
+</script>
+{% endblock %}

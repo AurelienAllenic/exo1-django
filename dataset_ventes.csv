@@ -1,0 +1,51 @@
+date,produit,categorie,region,vendeur,quantite,prix_unitaire,ca_total,remise_pct,note_client
+2024-01-03,Laptop Pro 15,Informatique,Île-de-France,Sophie Martin,2,1299.99,2599.98,5,4.5
+2024-01-05,Souris Ergonomique,Périphériques,Bretagne,Lucas Dupont,10,45.90,459.00,0,4.8
+2024-01-07,Écran 27 pouces,Périphériques,Occitanie,Emma Bernard,3,349.00,1047.00,10,4.2
+2024-01-09,Clavier Mécanique,Périphériques,Île-de-France,Sophie Martin,5,129.00,645.00,5,4.7
+2024-01-10,Laptop Pro 15,Informatique,Bretagne,Lucas Dupont,1,1299.99,1299.99,0,4.1
+2024-01-12,Casque Audio,Audio,PACA,Théo Rousseau,8,89.90,719.20,0,4.9
+2024-01-15,Webcam HD,Périphériques,Bretagne,Lucas Dupont,6,79.99,479.94,10,3.8
+2024-01-17,SSD 1To,Stockage,Île-de-France,Sophie Martin,12,109.00,1308.00,5,4.6
+2024-01-18,Laptop Ultra,Informatique,Occitanie,Emma Bernard,1,1799.00,1799.00,0,4.3
+2024-01-20,Tablette 10p,Informatique,PACA,Théo Rousseau,4,399.00,1596.00,8,4.0
+2024-01-22,Souris Ergonomique,Périphériques,Île-de-France,Sophie Martin,15,45.90,688.50,0,4.8
+2024-01-24,Écran 27 pouces,Périphériques,Bretagne,Lucas Dupont,2,349.00,698.00,5,4.5
+2024-01-25,Hub USB-C,Périphériques,Occitanie,Emma Bernard,20,39.99,799.80,0,4.1
+2024-01-28,Laptop Pro 15,Informatique,Île-de-France,Sophie Martin,3,1299.99,3899.97,10,4.6
+2024-01-30,Casque Audio,Audio,Bretagne,Lucas Dupont,5,89.90,449.50,0,4.7
+2024-02-01,Clavier Mécanique,Périphériques,PACA,Théo Rousseau,7,129.00,903.00,5,4.4
+2024-02-03,SSD 1To,Stockage,Île-de-France,Sophie Martin,9,109.00,981.00,0,4.5
+2024-02-05,Webcam HD,Périphériques,Occitanie,Emma Bernard,4,79.99,319.96,5,3.9
+2024-02-07,Tablette 10p,Informatique,Île-de-France,Sophie Martin,2,399.00,798.00,0,4.2
+2024-02-10,Écran 27 pouces,Périphériques,PACA,Théo Rousseau,5,349.00,1745.00,10,4.6
+2024-02-12,Laptop Ultra,Informatique,Bretagne,Lucas Dupont,2,1799.00,3598.00,5,4.4
+2024-02-14,Hub USB-C,Périphériques,Île-de-France,Sophie Martin,25,39.99,999.75,0,4.0
+2024-02-16,Casque Audio,Audio,Occitanie,Emma Bernard,11,89.90,988.90,0,4.8
+2024-02-18,Souris Ergonomique,Périphériques,Bretagne,Lucas Dupont,18,45.90,826.20,5,4.9
+2024-02-20,Laptop Pro 15,Informatique,Île-de-France,Sophie Martin,4,1299.99,5199.96,8,4.7
+2024-02-22,SSD 1To,Stockage,PACA,Théo Rousseau,14,109.00,1526.00,0,4.3
+2024-02-25,Clavier Mécanique,Périphériques,Occitanie,Emma Bernard,9,129.00,1161.00,5,4.5
+2024-02-27,Webcam HD,Périphériques,Île-de-France,Sophie Martin,7,79.99,559.93,0,4.1
+2024-03-01,Tablette 10p,Informatique,Bretagne,Lucas Dupont,3,399.00,1197.00,10,4.3
+2024-03-03,Écran 27 pouces,Périphériques,Île-de-France,Sophie Martin,6,349.00,2094.00,5,4.7
+2024-03-05,Laptop Pro 15,Informatique,PACA,Théo Rousseau,2,1299.99,2599.98,0,4.5
+2024-03-07,Hub USB-C,Périphériques,Bretagne,Lucas Dupont,30,39.99,1199.70,0,4.2
+2024-03-10,Casque Audio,Audio,Île-de-France,Sophie Martin,13,89.90,1168.70,5,4.9
+2024-03-12,SSD 1To,Stockage,Occitanie,Emma Bernard,16,109.00,1744.00,0,4.6
+2024-03-14,Laptop Ultra,Informatique,Île-de-France,Sophie Martin,3,1799.00,5397.00,10,4.8
+2024-03-16,Souris Ergonomique,Périphériques,PACA,Théo Rousseau,22,45.90,1009.80,0,4.7
+2024-03-18,Clavier Mécanique,Périphériques,Bretagne,Lucas Dupont,11,129.00,1419.00,5,4.4
+2024-03-20,Webcam HD,Périphériques,Occitanie,Emma Bernard,8,79.99,639.92,0,3.7
+2024-03-22,Tablette 10p,Informatique,Île-de-France,Sophie Martin,5,399.00,1995.00,8,4.1
+2024-03-25,Écran 27 pouces,Périphériques,Bretagne,Lucas Dupont,4,349.00,1396.00,0,4.5
+2024-03-27,Laptop Pro 15,Informatique,Occitanie,Emma Bernard,1,1299.99,1299.99,5,4.3
+2024-03-29,Hub USB-C,Périphériques,PACA,Théo Rousseau,35,39.99,1399.65,0,4.0
+2024-04-02,Casque Audio,Audio,Île-de-France,Sophie Martin,9,89.90,809.10,0,4.8
+2024-04-04,SSD 1To,Stockage,Bretagne,Lucas Dupont,20,109.00,2180.00,5,4.7
+2024-04-06,Laptop Ultra,Informatique,PACA,Théo Rousseau,2,1799.00,3598.00,0,4.6
+2024-04-08,Souris Ergonomique,Périphériques,Occitanie,Emma Bernard,26,45.90,1193.40,10,4.9
+2024-04-10,Clavier Mécanique,Périphériques,Île-de-France,Sophie Martin,14,129.00,1806.00,5,4.5
+2024-04-12,Webcam HD,Périphériques,Bretagne,Lucas Dupont,10,79.99,799.90,0,4.0
+2024-04-15,Tablette 10p,Informatique,Île-de-France,Sophie Martin,6,399.00,2394.00,5,4.4
+2024-04-17,Écran 27 pouces,Périphériques,PACA,Théo Rousseau,7,349.00,2443.00,10,4.6

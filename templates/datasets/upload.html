@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Téléverser un dataset — CSV Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 mt-2">
+    <div class="d-flex align-items-center mb-4 gap-3">
+      <a href="{% url 'datasets:list' %}" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+      <h1 class="h3 mb-0"><i class="bi bi-upload me-2"></i>Téléverser un CSV</h1>
+    </div>
+
+    <div class="card">
+      <div class="card-body p-4">
+        <form method="post" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="mb-4">
+            <label class="form-label fw-semibold">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}
+            <div class="form-text">{{ field.help_text }}</div>
+            {% endif %}
+            {% if field.errors %}
+            <div class="text-danger small mt-1">{{ field.errors.0 }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+
+          <div class="alert alert-info small">
+            <i class="bi bi-info-circle me-1"></i>
+            Formats acceptés : <strong>.csv</strong> — Taille max : <strong>50 Mo</strong>
+          </div>
+
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="bi bi-bar-chart-fill me-2"></i>Analyser le dataset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

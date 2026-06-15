@@ -1,0 +1,88 @@
+# ── Environnement virtuel ─────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Variables d'environnement (secrets) ───────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Django ────────────────────────────────────────────────────────────────────
+*.sqlite3
+*.sqlite3-journal
+db.sqlite3
+
+# Fichiers uploadés par les utilisateurs (avatars, datasets…)
+media/
+
+# Fichiers statiques collectés (générés par collectstatic)
+staticfiles/
+
+# Logs Django
+*.log
+logs/
+
+# Cache templates compilés
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ── Python général ────────────────────────────────────────────────────────────
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+MANIFEST
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# mypy / type checkers
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ── IDEs & éditeurs ───────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ── Système d'exploitation ────────────────────────────────────────────────────
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encdata
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+# ── Divers ────────────────────────────────────────────────────────────────────
+*.bak
+*.tmp
+*.orig
+.cache/

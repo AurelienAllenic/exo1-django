@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Mon profil — CSV Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+
+    <!-- En-tête profil -->
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <div class="position-relative" style="flex-shrink:0;">
+        {% if profile.avatar %}
+        <img src="{{ profile.avatar.url }}" alt="avatar"
+             class="rounded-circle object-fit-cover border border-2 border-white shadow-sm"
+             style="width:56px;height:56px;">
+        {% else %}
+        <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center border border-2 border-white shadow-sm"
+             style="width:56px;height:56px;">
+          <i class="bi bi-person-fill text-white fs-4"></i>
+        </div>
+        {% endif %}
+      </div>
+      <div>
+        <h1 class="h4 mb-0 fw-bold">{{ user.username }}</h1>
+        <small class="text-muted">{{ user.email|default:"Aucun e-mail renseigné" }}</small>
+      </div>
+      <span class="badge bg-success ms-auto">
+        <i class="bi bi-circle-fill me-1" style="font-size:.5rem;vertical-align:middle;"></i>Connecté
+      </span>
+    </div>
+
+    <!-- Photo de profil -->
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center"
+           role="button" data-bs-toggle="collapse" data-bs-target="#section-avatar"
+           style="cursor:pointer; user-select:none;">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-image me-1 text-primary"></i>
+          <span class="fw-semibold">Photo de profil</span>
+          {% if not profile.avatar %}<span class="text-muted small fw-normal">Non définie</span>{% endif %}
+        </div>
+        <i class="bi bi-chevron-down" style="transition:transform .2s;" id="chev-avatar"></i>
+      </div>
+      <div class="collapse {% if avatar_form.errors %}show{% endif %}" id="section-avatar">
+        <div class="card-body">
+          <div class="d-flex align-items-center gap-4 mb-3">
+            {% if profile.avatar %}
+            <img src="{{ profile.avatar.url }}" alt="avatar"
+                 class="rounded-circle object-fit-cover border"
+                 style="width:80px;height:80px;">
+            {% else %}
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center"
+                 style="width:80px;height:80px;">
+              <i class="bi bi-person-fill text-white" style="font-size:2rem;"></i>
+            </div>
+            {% endif %}
+            <div class="flex-grow-1">
+              <form method="post" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="action" value="avatar">
+                {{ avatar_form.avatar }}
+                {% if avatar_form.avatar.errors %}
+                <div class="text-danger small mt-1">{{ avatar_form.avatar.errors.0 }}</div>
+                {% endif %}
+                <div class="form-text mb-2">JPG, PNG ou WebP — 5 Mo max. Redimensionnée à 300×300 px.</div>
+                <button type="submit" class="btn btn-primary btn-sm">
+                  <i class="bi bi-upload me-1"></i>Mettre à jour
+                </button>
+              </form>
+            </div>
+          </div>
+          {% if profile.avatar %}
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="remove_avatar">
+            <button type="submit" class="btn btn-outline-danger btn-sm">
+              <i class="bi bi-trash me-1"></i>Supprimer la photo
+            </button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Nom d'utilisateur -->
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center"
+           role="button" data-bs-toggle="collapse" data-bs-target="#section-username"
+           style="cursor:pointer; user-select:none;">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-person me-1 text-primary"></i>
+          <span class="fw-semibold">Nom d'utilisateur</span>
+          <span class="text-muted small fw-normal">{{ user.username }}</span>
+        </div>
+        <i class="bi bi-chevron-down" style="transition:transform .2s;" id="chev-username"></i>
+      </div>
+      <div class="collapse {% if username_form.errors %}show{% endif %}" id="section-username">
+        <div class="card-body">
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="action" value="username">
+            <div class="mb-3">
+              <label class="form-label fw-semibold small">Nouveau nom</label>
+              {{ username_form.username }}
+              {% if username_form.username.errors %}
+              <div class="text-danger small mt-1">{{ username_form.username.errors.0 }}</div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="bi bi-check-lg me-1"></i>Enregistrer
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Adresse e-mail -->
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center"
+           role="button" data-bs-toggle="collapse" data-bs-target="#section-email"
+           style="cursor:pointer; user-select:none;">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-envelope me-1 text-primary"></i>
+          <span class="fw-semibold">Adresse e-mail</span>
+          <span class="text-muted small fw-normal">{{ user.email|default:"—" }}</span>
+        </div>
+        <i class="bi bi-chevron-down" style="transition:transform .2s;" id="chev-email"></i>
+      </div>
+      <div class="collapse {% if email_form.errors %}show{% endif %}" id="section-email">
+        <div class="card-body">
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="action" value="email">
+            <div class="mb-3">
+              <label class="form-label fw-semibold small">Nouvel e-mail</label>
+              {{ email_form.email }}
+              {% if email_form.email.errors %}
+              <div class="text-danger small mt-1">{{ email_form.email.errors.0 }}</div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="bi bi-check-lg me-1"></i>Enregistrer
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mot de passe -->
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center"
+           role="button" data-bs-toggle="collapse" data-bs-target="#section-password"
+           style="cursor:pointer; user-select:none;">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-lock me-1 text-primary"></i>
+          <span class="fw-semibold">Mot de passe</span>
+          <span class="text-muted small fw-normal">••••••••</span>
+        </div>
+        <i class="bi bi-chevron-down" style="transition:transform .2s;" id="chev-password"></i>
+      </div>
+      <div class="collapse {% if password_form.errors %}show{% endif %}" id="section-password">
+        <div class="card-body">
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="action" value="password">
+            {% for field in password_form %}
+            <div class="mb-3">
+              <label class="form-label fw-semibold small">{{ field.label }}</label>
+              <div class="input-group">
+                {{ field }}
+                <button class="btn btn-outline-secondary" type="button"
+                        onclick="togglePassword(this)" tabindex="-1">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+              {% if field.help_text %}
+              <div class="form-text text-muted">{{ field.help_text }}</div>
+              {% endif %}
+              {% if field.errors %}
+              <div class="text-danger small mt-1">{{ field.errors.0 }}</div>
+              {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="bi bi-check-lg me-1"></i>Changer le mot de passe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infos compte -->
+    <div class="card bg-light border-0 mb-3">
+      <div class="card-body py-3 d-flex justify-content-between text-muted small">
+        <span><i class="bi bi-calendar3 me-1"></i>Membre depuis le {{ user.date_joined|date:"d/m/Y" }}</span>
+        <span><i class="bi bi-bar-chart me-1"></i>{{ user.datasets.count }} dataset{{ user.datasets.count|pluralize }}</span>
+      </div>
+    </div>
+
+    <a href="{% url 'datasets:list' %}" class="btn btn-outline-secondary btn-sm">
+      <i class="bi bi-arrow-left me-1"></i>Retour à mes datasets
+    </a>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+['avatar','username','email','password'].forEach(key => {
+  const pane = document.getElementById(`section-${key}`);
+  const icon = document.getElementById(`chev-${key}`);
+  if (!pane || !icon) return;
+  pane.addEventListener('show.bs.collapse', () => icon.style.transform = 'rotate(180deg)');
+  pane.addEventListener('hide.bs.collapse', () => icon.style.transform = 'rotate(0deg)');
+  if (pane.classList.contains('show')) icon.style.transform = 'rotate(180deg)';
+});
+
+function togglePassword(btn) {
+  const input = btn.previousElementSibling;
+  const icon  = btn.querySelector('i');
+  input.type = input.type === 'password' ? 'text' : 'password';
+  icon.className = input.type === 'password' ? 'bi bi-eye' : 'bi bi-eye-slash';
+}
+</script>
+{% endblock %}
